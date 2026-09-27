@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dpeqdxb317lrk"]
+
+[ext_resource type="Script" uid="uid://qy4it252asph" path="res://game/game.gd" id="1_qdja7"]
+[ext_resource type="PackedScene" uid="uid://clc41ipfan7bu" path="res://core/ui/PauseMenu.tscn" id="2_m71xk"]
+
+[node name="Game" type="Control" unique_id=670230050 node_paths=PackedStringArray("back_button", "pause_menu")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qdja7")
+back_button = NodePath("Back")
+pause_menu = NodePath("PauseMenu")
+
+[node name="Back" type="Button" parent="." unique_id=626386526]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = -15.5
+offset_right = 51.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back to Title"
+
+[node name="PauseMenu" parent="." unique_id=1641965247 instance=ExtResource("2_m71xk")]
+layout_mode = 1

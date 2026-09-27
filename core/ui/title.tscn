@@ -14,7 +14,16 @@ game_scene = "uid://dpeqdxb317lrk"
 play_button = NodePath("PlayButton")
 
 [node name="PlayButton" type="Button" parent="." unique_id=852678361]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -15.5
+offset_right = 20.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Play"
