@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bub40ec1qfl2u"]
+
+[ext_resource type="Script" uid="uid://dotsrnnn415j1" path="res://core/ui/title.gd" id="1_s5xim"]
+
+[node name="Title" type="Control" unique_id=1641629483 node_paths=PackedStringArray("play_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s5xim")
+game_scene = "uid://dpeqdxb317lrk"
+play_button = NodePath("PlayButton")
+
+[node name="PlayButton" type="Button" parent="." unique_id=852678361]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Play"
