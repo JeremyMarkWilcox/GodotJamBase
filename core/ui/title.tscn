@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bub40ec1qfl2u"]
 
 [ext_resource type="Script" uid="uid://dotsrnnn415j1" path="res://core/ui/title.gd" id="1_s5xim"]
+[ext_resource type="PackedScene" uid="uid://dr52lc4bvyyj7" path="res://core/ui/settings_menu.tscn" id="2_fepre"]
 
-[node name="Title" type="Control" unique_id=1641629483 node_paths=PackedStringArray("play_button")]
+[node name="Title" type="Control" unique_id=1641629483 node_paths=PackedStringArray("play_button", "settings_button", "settings_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,19 +12,31 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s5xim")
 game_scene = "uid://dpeqdxb317lrk"
-play_button = NodePath("PlayButton")
+play_button = NodePath("VBoxContainer/PlayButton")
+settings_button = NodePath("VBoxContainer/Settings")
+settings_menu = NodePath("VBoxContainer/SettingsMenu")
 
-[node name="PlayButton" type="Button" parent="." unique_id=852678361]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=919356858]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.5
-offset_top = -15.5
-offset_right = 20.5
-offset_bottom = 15.5
+offset_left = -35.0
+offset_top = -35.0
+offset_right = 35.0
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=852678361]
+layout_mode = 2
 text = "Play"
+
+[node name="Settings" type="Button" parent="VBoxContainer" unique_id=1578274722]
+layout_mode = 2
+text = "Settings"
+
+[node name="SettingsMenu" parent="VBoxContainer" unique_id=662873383 instance=ExtResource("2_fepre")]
+layout_mode = 2

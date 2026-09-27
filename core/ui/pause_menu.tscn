@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://blcy7p60o1i33" path="res://core/ui/pause_menu.gd" id="1_jxs0t"]
 
-[node name="PauseMenu" type="Control" unique_id=1641965247 node_paths=PackedStringArray("resume_button", "restart_button", "quit_button", "first_focus")]
+[node name="PauseMenu" type="Control" unique_id=1641965247 node_paths=PackedStringArray("resume_button", "restart_button", "quit_button", "settings_button", "settings_menu", "first_focus")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,8 @@ script = ExtResource("1_jxs0t")
 resume_button = NodePath("Restart/ResumeButton")
 restart_button = NodePath("Restart/RestartButton")
 quit_button = NodePath("Restart/QuitButton")
+settings_button = NodePath("Restart/Settings")
+settings_menu = NodePath(".")
 first_focus = NodePath("Restart/ResumeButton")
 
 [node name="Dim" type="ColorRect" parent="." unique_id=206671920]
@@ -45,6 +47,10 @@ text = "Resume"
 [node name="RestartButton" type="Button" parent="Restart" unique_id=644740672]
 layout_mode = 2
 text = "Restart"
+
+[node name="Settings" type="Button" parent="Restart" unique_id=412556533]
+layout_mode = 2
+text = "Settings"
 
 [node name="QuitButton" type="Button" parent="Restart" unique_id=754210131]
 layout_mode = 2
