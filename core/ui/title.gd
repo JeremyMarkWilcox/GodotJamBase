@@ -4,9 +4,11 @@ extends Control
 @export var play_button: Button
 @export var settings_button: Button
 @export var settings_menu: BaseMenu
+@export var music: AudioStream
 
 
 func _ready() -> void:
+	Audio.play_music(music)
 	play_button.pressed.connect(_on_play_pressed)
 	play_button.grab_focus()
 	settings_button.pressed.connect(func() -> void: MenuManager.open_menu(settings_menu))

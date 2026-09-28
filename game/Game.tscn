@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dpeqdxb317lrk"]
 
 [ext_resource type="Script" uid="uid://qy4it252asph" path="res://game/game.gd" id="1_qdja7"]
+[ext_resource type="AudioStream" uid="uid://4qr4upba6mol" path="res://assets/sounds/music/Duty Calls - Rod Kim.mp3" id="2_i75et"]
 [ext_resource type="PackedScene" uid="uid://clc41ipfan7bu" path="res://core/ui/pause_menu.tscn" id="2_m71xk"]
 [ext_resource type="PackedScene" uid="uid://dr52lc4bvyyj7" path="res://core/ui/settings_menu.tscn" id="3_m71xk"]
 
@@ -14,6 +15,7 @@ grow_vertical = 2
 script = ExtResource("1_qdja7")
 back_button = NodePath("Back")
 pause_menu = NodePath("PauseMenu")
+music = ExtResource("2_i75et")
 
 [node name="Back" type="Button" parent="." unique_id=626386526]
 layout_mode = 1

@@ -19,6 +19,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		if top_menu().can_go_back:
 			close_menu()
 		get_viewport().set_input_as_handled()
+		if top_menu().can_go_back:
+			Audio.play_back()
+			close_menu()
 
 
 func open_menu(menu: BaseMenu) -> void:

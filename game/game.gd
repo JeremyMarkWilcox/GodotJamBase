@@ -2,9 +2,11 @@ extends Control
 
 @export var back_button: Button
 @export var pause_menu: BaseMenu
+@export var music: AudioStream
 
 
 func _ready() -> void:
+	Audio.play_music(music)
 	back_button.pressed.connect(_on_back_pressed)
 	back_button.grab_focus()
 

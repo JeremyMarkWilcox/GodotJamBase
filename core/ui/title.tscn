@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bub40ec1qfl2u"]
 
 [ext_resource type="Script" uid="uid://dotsrnnn415j1" path="res://core/ui/title.gd" id="1_s5xim"]
+[ext_resource type="AudioStream" uid="uid://bjtpqornf3g4s" path="res://assets/sounds/music/Deified - The Grey Room _ Density & Time.mp3" id="2_4snhl"]
 [ext_resource type="PackedScene" uid="uid://dr52lc4bvyyj7" path="res://core/ui/settings_menu.tscn" id="2_fepre"]
 
 [node name="Title" type="Control" unique_id=1641629483 node_paths=PackedStringArray("play_button", "settings_button", "settings_menu")]
@@ -15,6 +16,7 @@ game_scene = "uid://dpeqdxb317lrk"
 play_button = NodePath("VBoxContainer/PlayButton")
 settings_button = NodePath("VBoxContainer/Settings")
 settings_menu = NodePath("VBoxContainer/SettingsMenu")
+music = ExtResource("2_4snhl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=919356858]
 layout_mode = 1
