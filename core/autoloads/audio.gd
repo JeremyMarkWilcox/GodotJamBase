@@ -80,6 +80,11 @@ func stop_music(fade_time := default_crossfade) -> void:
 	if not _active_music.playing:
 		return
 	_crossfade(_active_music, null, fade_time)
+	
+	
+func stop_all_sfx() -> void:
+	for player in _sfx_players:
+		player.stop()
 
 
 func _crossfade(from: AudioStreamPlayer, to: AudioStreamPlayer, fade_time: float) -> void:

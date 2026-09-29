@@ -27,6 +27,7 @@ func change_scene(path: String) -> void:
 	is_transitioning = true
 	transition_started.emit()
 	await _fade_to(1.0)
+	Audio.stop_all_sfx()
 
 	get_tree().paused = false
 	var error := get_tree().change_scene_to_file(path)
@@ -74,3 +75,4 @@ func _fade_to(alpha: float) -> void:
 	await tween.finished
 	if alpha == 0.0:
 		_fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			

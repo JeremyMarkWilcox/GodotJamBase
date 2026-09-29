@@ -2,7 +2,13 @@
 
 [ext_resource type="Script" uid="uid://ofjd23x0aj6q" path="res://core/ui/settings_menu.gd" id="1_ig1xr"]
 
-[node name="SettingsMenu" type="Control" unique_id=662873383 node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider", "ui_slider", "fullscreen_toggle", "ui_scale_slider", "shake_toggle", "flash_toggle", "back_button", "first_focus")]
+[sub_resource type="LabelSettings" id="LabelSettings_g4gaj"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_4liu5"]
+font_size = 25
+
+[node name="SettingsMenu" type="Control" unique_id=662873383 node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider", "ui_slider", "fullscreen_toggle", "ui_scale_slider", "shake_toggle", "flash_toggle", "back_button", "controls_button", "first_focus")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,11 +20,12 @@ master_slider = NodePath("VBoxContainer/Master/HSlider")
 music_slider = NodePath("VBoxContainer/Music/HSlider")
 sfx_slider = NodePath("VBoxContainer/SFX/HSlider")
 ui_slider = NodePath("VBoxContainer/UI/HSlider")
-fullscreen_toggle = NodePath("VBoxContainer/FullScreen")
+fullscreen_toggle = NodePath("VBoxContainer/FullScreenBox/FullScreen")
 ui_scale_slider = NodePath("VBoxContainer/UIScale/HSlider")
-shake_toggle = NodePath("VBoxContainer/ScreenShake")
-flash_toggle = NodePath("VBoxContainer/FlashingEffects")
+shake_toggle = NodePath("VBoxContainer/ShakeScreenBox/ScreenShake")
+flash_toggle = NodePath("VBoxContainer/FlashingEffectsBox/FlashingEffects")
 back_button = NodePath("VBoxContainer/BackButton")
+controls_button = NodePath("VBoxContainer/ControlsButton")
 first_focus = NodePath("VBoxContainer/Master/HSlider")
 
 [node name="Dim" type="ColorRect" parent="." unique_id=316380518]
@@ -28,7 +35,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.23529412)
+color = Color(0, 0, 0, 0.92156863)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=490367709]
 layout_mode = 1
@@ -37,24 +44,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -129.5
-offset_top = -42.5
-offset_right = 129.5
-offset_bottom = 42.5
+offset_left = -166.0
+offset_top = -237.5
+offset_right = 166.0
+offset_bottom = 237.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Settings" type="Label" parent="VBoxContainer" unique_id=1447628128]
+[node name="SettingsHeader" type="Label" parent="VBoxContainer" unique_id=1447628128]
 layout_mode = 2
-text = "                          Settings
-"
+text = "Settings"
+label_settings = SubResource("LabelSettings_g4gaj")
+horizontal_alignment = 1
+
+[node name="AudioHeader" type="Label" parent="VBoxContainer" unique_id=1080124852]
+layout_mode = 2
+text = "Audio"
+label_settings = SubResource("LabelSettings_4liu5")
+horizontal_alignment = 1
 
 [node name="Master" type="HBoxContainer" parent="VBoxContainer" unique_id=841604754]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/Master" unique_id=982648564]
 layout_mode = 2
-text = "Master      "
+text = "Master                 "
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/Master" unique_id=1890600828]
 custom_minimum_size = Vector2(200, 0)
@@ -67,7 +81,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/Music" unique_id=380194808]
 layout_mode = 2
-text = "Music        "
+text = "Music                   "
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/Music" unique_id=709042131]
 custom_minimum_size = Vector2(200, 0)
@@ -80,7 +94,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/SFX" unique_id=2011004812]
 layout_mode = 2
-text = "SFX            "
+text = "Sound Effects     "
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/SFX" unique_id=68022615]
 custom_minimum_size = Vector2(200, 0)
@@ -93,7 +107,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/UI" unique_id=1590328559]
 layout_mode = 2
-text = "UI               "
+text = "UI Sounds            "
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/UI" unique_id=1583891508]
 custom_minimum_size = Vector2(200, 0)
@@ -101,16 +115,54 @@ layout_mode = 2
 max_value = 1.0
 step = 0.05
 
-[node name="FullScreen" type="CheckButton" parent="VBoxContainer" unique_id=1193615506]
+[node name="DisplayHeader" type="Label" parent="VBoxContainer" unique_id=1217627401]
 layout_mode = 2
-text = "Fullscreen"
+text = "Display"
+label_settings = SubResource("LabelSettings_4liu5")
+horizontal_alignment = 1
+
+[node name="FullScreenBox" type="HBoxContainer" parent="VBoxContainer" unique_id=112144350]
+layout_mode = 2
+
+[node name="FullScreenText" type="Label" parent="VBoxContainer/FullScreenBox" unique_id=1695258642]
+layout_mode = 2
+text = "FullScreen         "
+
+[node name="FullScreen" type="CheckButton" parent="VBoxContainer/FullScreenBox" unique_id=1193615506]
+layout_mode = 2
+
+[node name="AccessibilityHeader" type="Label" parent="VBoxContainer" unique_id=2076082527]
+layout_mode = 2
+text = "Accessibility"
+label_settings = SubResource("LabelSettings_4liu5")
+horizontal_alignment = 1
+
+[node name="ShakeScreenBox" type="HBoxContainer" parent="VBoxContainer" unique_id=1186380392]
+layout_mode = 2
+
+[node name="ShakeScreenText" type="Label" parent="VBoxContainer/ShakeScreenBox" unique_id=590019155]
+layout_mode = 2
+text = "Shake Screen    "
+
+[node name="ScreenShake" type="CheckButton" parent="VBoxContainer/ShakeScreenBox" unique_id=864856497]
+layout_mode = 2
+
+[node name="FlashingEffectsBox" type="HBoxContainer" parent="VBoxContainer" unique_id=1459189495]
+layout_mode = 2
+
+[node name="FlashingEffectsText" type="Label" parent="VBoxContainer/FlashingEffectsBox" unique_id=1539317022]
+layout_mode = 2
+text = "Flashing Effects"
+
+[node name="FlashingEffects" type="CheckButton" parent="VBoxContainer/FlashingEffectsBox" unique_id=2029714032]
+layout_mode = 2
 
 [node name="UIScale" type="HBoxContainer" parent="VBoxContainer" unique_id=394992399]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/UIScale" unique_id=1975529225]
 layout_mode = 2
-text = "UI Scale     "
+text = "UI Scale                "
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/UIScale" unique_id=1998406588]
 custom_minimum_size = Vector2(200, 0)
@@ -120,13 +172,9 @@ max_value = 1.5
 step = 0.25
 value = 0.75
 
-[node name="ScreenShake" type="CheckButton" parent="VBoxContainer" unique_id=864856497]
+[node name="ControlsButton" type="Button" parent="VBoxContainer" unique_id=190658101]
 layout_mode = 2
-text = "Screen Shake"
-
-[node name="FlashingEffects" type="CheckButton" parent="VBoxContainer" unique_id=2029714032]
-layout_mode = 2
-text = "Flashing Effects"
+text = "Controls"
 
 [node name="BackButton" type="Button" parent="VBoxContainer" unique_id=1386689142]
 layout_mode = 2

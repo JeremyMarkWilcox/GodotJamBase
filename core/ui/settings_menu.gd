@@ -9,10 +9,13 @@ extends BaseMenu
 @export var shake_toggle: CheckButton
 @export var flash_toggle: CheckButton
 @export var back_button: Button
+@export var controls_button: Button
+@export var controls_menu: BaseMenu
 
 
 func _ready() -> void:
 	super()
+	controls_button.pressed.connect(func() -> void: MenuManager.open_menu(controls_menu))
 	master_slider.value_changed.connect(func(value: float) -> void: Settings.set_volume("Master", value))
 	music_slider.value_changed.connect(func(value: float) -> void: Settings.set_volume("Music", value))
 	sfx_slider.value_changed.connect(func(value: float) -> void: Settings.set_volume("SFX", value))

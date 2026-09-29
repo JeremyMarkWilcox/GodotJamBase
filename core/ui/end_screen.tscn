@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cyyymtcnpcy60"]
+
+[ext_resource type="Script" uid="uid://bsq1ys1w6rko1" path="res://core/ui/end_screen.gd" id="1_ii3hx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ra2i3"]
+font_size = 50
+
+[node name="EndScreen" type="Control" unique_id=1090858386 node_paths=PackedStringArray("heading_label", "retry_button", "title_button", "first_focus")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ii3hx")
+heading_label = NodePath("VBoxContainer/Heading")
+retry_button = NodePath("VBoxContainer/RetryButton")
+title_button = NodePath("VBoxContainer/TitleButton")
+first_focus = NodePath("VBoxContainer/RetryButton")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=186364503]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7058824)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1969318145]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Heading" type="Label" parent="VBoxContainer" unique_id=885659446]
+layout_mode = 2
+text = "Heading"
+label_settings = SubResource("LabelSettings_ra2i3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RetryButton" type="Button" parent="VBoxContainer" unique_id=1797708706]
+layout_mode = 2
+text = "Retry"
+
+[node name="TitleButton" type="Button" parent="VBoxContainer" unique_id=1329844631]
+layout_mode = 2
+text = "Back to Title"

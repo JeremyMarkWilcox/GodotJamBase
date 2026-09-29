@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://dotsrnnn415j1" path="res://core/ui/title.gd" id="1_s5xim"]
 [ext_resource type="AudioStream" uid="uid://bjtpqornf3g4s" path="res://assets/sounds/music/Deified - The Grey Room _ Density & Time.mp3" id="2_4snhl"]
 [ext_resource type="PackedScene" uid="uid://dr52lc4bvyyj7" path="res://core/ui/settings_menu.tscn" id="2_fepre"]
+[ext_resource type="PackedScene" uid="uid://ddt1m8s6wg7ju" path="res://core/ui/credits.tscn" id="4_q06yk"]
+[ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://controls_menu.tscn" id="5_f8y5p"]
 
-[node name="Title" type="Control" unique_id=1641629483 node_paths=PackedStringArray("play_button", "settings_button", "settings_menu")]
+[node name="Title" type="Control" unique_id=1641629483 node_paths=PackedStringArray("play_button", "settings_button", "credits_button", "quit_button", "settings_menu", "credits_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,10 +15,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s5xim")
 game_scene = "uid://dpeqdxb317lrk"
+music = ExtResource("2_4snhl")
 play_button = NodePath("VBoxContainer/PlayButton")
 settings_button = NodePath("VBoxContainer/Settings")
-settings_menu = NodePath("VBoxContainer/SettingsMenu")
-music = ExtResource("2_4snhl")
+credits_button = NodePath("VBoxContainer/CreditsButton")
+quit_button = NodePath("VBoxContainer/QuitButton")
+settings_menu = NodePath("SettingsMenu")
+credits_menu = NodePath("Credits")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=919356858]
 layout_mode = 1
@@ -40,5 +45,23 @@ text = "Play"
 layout_mode = 2
 text = "Settings"
 
-[node name="SettingsMenu" parent="VBoxContainer" unique_id=662873383 instance=ExtResource("2_fepre")]
+[node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=1689832209]
 layout_mode = 2
+text = "Credits"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1353322006]
+layout_mode = 2
+text = "Quit"
+
+[node name="SettingsMenu" parent="." unique_id=662873383 node_paths=PackedStringArray("controls_menu") instance=ExtResource("2_fepre")]
+visible = false
+layout_mode = 1
+controls_menu = NodePath("../ControlsMenu")
+
+[node name="Credits" parent="." unique_id=1391844769 instance=ExtResource("4_q06yk")]
+visible = false
+layout_mode = 1
+
+[node name="ControlsMenu" parent="." unique_id=1503134691 instance=ExtResource("5_f8y5p")]
+visible = false
+layout_mode = 1

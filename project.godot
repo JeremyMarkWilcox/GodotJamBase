@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Jam Base"
-run/main_scene="uid://bub40ec1qfl2u"
+run/main_scene="uid://bc7gq4vhepj5j"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

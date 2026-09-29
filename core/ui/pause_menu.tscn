@@ -24,7 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.23529412)
+color = Color(0, 0, 0, 0.7058824)
 
 [node name="Restart" type="VBoxContainer" parent="." unique_id=212127685]
 layout_mode = 1
