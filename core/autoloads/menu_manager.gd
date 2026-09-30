@@ -4,7 +4,13 @@ extends Node
 signal menu_opened(menu: BaseMenu)
 signal menu_closed(menu: BaseMenu)
 
+const NAV_ACTIONS: Array[StringName] = [&"ui_up", &"ui_down", &"ui_left", &"ui_right", &"ui_focus_next", &"ui_focus_prev"]
+const MOUSE_MOVE_THRESHOLD := 4.0
+
 var _stack: Array[BaseMenu] = []
+
+var _mouse_mode := false
+var _remembered_focus: Control
 
 
 func _ready() -> void:
@@ -50,7 +56,7 @@ func close_menu() -> void:
 		return
 	var menu: BaseMenu = _stack.pop_back()
 	menu.close()
-	menu.last_focus = null  # NEW: a fresh open starts at first_focus
+	menu.last_focus = null  # a fresh open starts at first_focus
 	if not _stack.is_empty():
 		top_menu().open()  # show the previous one and restore its focus
 	_update_pause()
@@ -84,3 +90,39 @@ func _update_pause() -> void:
 		if menu.pauses_game:
 			should_pause = true
 	get_tree().paused = should_pause
+
+
+func _input(event: InputEvent) -> void:
+	# Mouse used: hide the focus outline (only after a click is finished).
+	var is_click_release := event is InputEventMouseButton and not event.is_pressed()
+	var is_move := event is InputEventMouseMotion \
+			and (event as InputEventMouseMotion).button_mask == 0 \
+			and (event as InputEventMouseMotion).relative.length() > MOUSE_MOVE_THRESHOLD
+	if is_click_release or is_move:
+		_mouse_mode = true
+		_release_focus.call_deferred()
+		return
+	# Keyboard/controller navigation: bring focus back where it was.
+	if _mouse_mode:
+		for action in NAV_ACTIONS:
+			if event.is_action_pressed(action):
+				_mouse_mode = false
+				if get_viewport().gui_get_focus_owner() == null:
+					_restore_any_focus()
+					get_viewport().set_input_as_handled()  # first press just shows focus
+				return
+
+
+func _release_focus() -> void:
+	var focused := get_viewport().gui_get_focus_owner()
+	if focused:
+		_remembered_focus = focused
+		get_viewport().gui_release_focus()
+
+
+func _restore_any_focus() -> void:
+	var menu := top_menu()
+	if menu:
+		menu.restore_focus()
+	elif is_instance_valid(_remembered_focus) and _remembered_focus.is_visible_in_tree():
+		_remembered_focus.grab_focus()  # e.g. the title buttons, with no menu open

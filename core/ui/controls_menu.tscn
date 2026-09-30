@@ -1,16 +1,8 @@
 [gd_scene format=3 uid="uid://cniox0c88ga5l"]
 
 [ext_resource type="Script" uid="uid://djnn12jikg6ib" path="res://core/ui/controls_menu.gd" id="1_v34rh"]
+[ext_resource type="Theme" uid="uid://big3vhu7k1hbb" path="res://core/theme/base_theme.tres" id="2_4gk8h"]
 [ext_resource type="Script" uid="uid://bbwq8cxhfhu2i" path="res://core/ui/rebind.gd" id="2_ovn7s"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ra2i3"]
-font_size = 50
-
-[sub_resource type="LabelSettings" id="LabelSettings_g4gaj"]
-font_size = 25
-
-[sub_resource type="LabelSettings" id="LabelSettings_v34rh"]
-font_size = 25
 
 [node name="ControlsMenu" type="Control" unique_id=1503134691 node_paths=PackedStringArray("reset_button", "back_button", "first_focus", "focus_chain")]
 layout_mode = 3
@@ -23,7 +15,7 @@ script = ExtResource("1_v34rh")
 reset_button = NodePath("VBoxContainer/HBoxContainer/ResetButton")
 back_button = NodePath("VBoxContainer/HBoxContainer/BackButton")
 first_focus = NodePath("VBoxContainer/GridContainer/PauseKeyboard")
-focus_chain = [NodePath("VBoxContainer/GridContainer/PauseKeyboard"), NodePath("VBoxContainer/GridContainer/PauseController2"), NodePath("VBoxContainer/HBoxContainer/ResetButton"), NodePath("VBoxContainer/HBoxContainer/BackButton")]
+focus_chain = [NodePath("VBoxContainer/GridContainer/PauseKeyboard"), NodePath("VBoxContainer/GridContainer/PauseController"), NodePath("VBoxContainer/HBoxContainer/ResetButton"), NodePath("VBoxContainer/HBoxContainer/BackButton")]
 focus_columns = 2
 
 [node name="Dim" type="ColorRect" parent="." unique_id=281587102]
@@ -50,10 +42,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 12
 
-[node name="Controls" type="Label" parent="VBoxContainer" unique_id=87526610]
+[node name="ControlsTitle" type="Label" parent="VBoxContainer" unique_id=87526610]
 layout_mode = 2
+theme = ExtResource("2_4gk8h")
+theme_type_variation = &"TitleLabel"
 text = "Controls"
-label_settings = SubResource("LabelSettings_ra2i3")
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer" unique_id=337970955]
 layout_mode = 2
@@ -64,23 +57,25 @@ columns = 3
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Keyboard" type="Label" parent="VBoxContainer/GridContainer" unique_id=353086496]
+[node name="KeyboardHeader" type="Label" parent="VBoxContainer/GridContainer" unique_id=353086496]
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("2_4gk8h")
+theme_type_variation = &"HeaderLabel"
 text = "Keyboard"
-label_settings = SubResource("LabelSettings_g4gaj")
 
-[node name="Controller" type="Label" parent="VBoxContainer/GridContainer" unique_id=546781283]
+[node name="ControllerHeader" type="Label" parent="VBoxContainer/GridContainer" unique_id=546781283]
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("2_4gk8h")
+theme_type_variation = &"HeaderLabel"
 text = "Controller"
-label_settings = SubResource("LabelSettings_v34rh")
 
 [node name="Pause" type="Label" parent="VBoxContainer/GridContainer" unique_id=1206007460]
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("2_4gk8h")
 text = "Pause"
-label_settings = SubResource("LabelSettings_v34rh")
 
 [node name="PauseKeyboard" type="Button" parent="VBoxContainer/GridContainer" unique_id=634408257]
 custom_minimum_size = Vector2(160, 0)
@@ -88,7 +83,7 @@ layout_mode = 2
 script = ExtResource("2_ovn7s")
 action = &"pause"
 
-[node name="PauseController2" type="Button" parent="VBoxContainer/GridContainer" unique_id=1648494387]
+[node name="PauseController" type="Button" parent="VBoxContainer/GridContainer" unique_id=1648494387]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 script = ExtResource("2_ovn7s")

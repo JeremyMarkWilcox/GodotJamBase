@@ -17,10 +17,12 @@ See also: [NEW_JAM_CHECKLIST.md](NEW_JAM_CHECKLIST.md) for starting a new jam fr
 core/
   autoloads/   Global systems (see section 2)
   ui/          Reusable menus and their scripts, side by side
-  audio/       Audio resources for the template
-  theme/       Shared UI theme and fonts
+  theme/       Shared UI theme (base_theme.tres)
 game/          THIS jam's content only (placeholder game scene lives here)
-assets/        Shared raw media: fonts/, audio/, sprites/
+assets/        Shared raw media:
+  fonts/         Font files plus their license (VT323 + OFL.txt)
+  sounds/music/  Music tracks
+  sounds/sfx/    Sound effects and UI sounds
 docs/          These docs
 addons/        Plugins, only when a project needs one
 ```
@@ -142,7 +144,7 @@ The game scene decides what "win" and "lose" mean by connecting to those signals
 ```
 boot.tscn (main scene)
   └─ web: "Click to start" (unlocks browser audio)   desktop: skips straight on
-title.tscn  ── Play ──►  game/Game.tscn
+title.tscn  ── Play ──►  game/game.tscn
   ├─ Settings ─► Controls                  ├─ Esc/Start ─► Pause menu
   ├─ Credits                               │     ├─ Resume / Restart / Quit to Title
   └─ Quit (hidden on web)                  │     └─ Settings ─► Controls
@@ -177,6 +179,14 @@ The menu remembers where the player was: backing out of Settings returns focus t
 1. **A menu opened from another menu must be its sibling, not its child.** Opening a sub-menu hides the one underneath, and hiding a parent hides all its children.
 2. **Never put a menu inside a Container** (VBox, HBox, Grid). Containers resize their children into rows and will squash the menu. Menus go *next to* containers.
 3. **Only focusable controls go in the Focus Chain** (buttons, sliders, toggles), never labels or rows.
+
+### Scrolling content (ScrollContainer)
+
+For content taller than the screen (credits, long option lists), put it inside a **ScrollContainer**.
+
+- **Give the ScrollContainer a Custom Minimum Size** (Inspector → Layout). Inside a VBox it otherwise shrinks to zero height and shows nothing.
+- The content inside (e.g. a RichTextLabel) needs **Fit Content** on so it grows to its full height and the container has something to scroll.
+- The Credits menu scrolls with the mouse wheel **and** with controller/keyboard up/down (`credits.gd`, `SCROLL_STEP` = pixels per press, hold to repeat).
 
 ### How to add a new menu
 
@@ -289,7 +299,22 @@ Follow the official GDScript style guide:
 - Zip the **contents** of the build folder (not the folder), upload to itch.io as an HTML project, embed size 1280 × 720, fullscreen button on.
 - Double-clicking `index.html` does not work: browsers only load web games from a web server.
 
-## 10. Glossary
+## 10. UI theme
+
+`core/theme/base_theme.tres` is set in **Project Settings → GUI → Theme → Custom**, so it styles every control in the game. Keep it a neutral baseline; each game restyles it for its own art direction.
+
+- **Default Font / Default Font Size:** set on the theme resource itself.
+- **Button styles:** Theme editor → Type: Button → StyleBoxes tab (`normal`, `hover`, `pressed`, `disabled`, `focus`). Use the same Content Margins on every state so buttons don't change size. Click a StyleBox slot to edit it in the Inspector.
+- **Focus outline:** the `focus` StyleBox (Draw Center off, border 3px, bright border color). Also set it on HSlider and CheckButton. It only shows for keyboard/controller: MenuManager hides focus while the mouse is being used and brings it back on the first navigation press.
+- **Section headers:** the `HeaderLabel` type variation (based on Label). Set a header node's **Theme Type Variation** to `HeaderLabel`.
+- **Screen titles:** the `TitleLabel` type variation (bigger), used by menu titles such as "Credits".
+- **Font:** VT323 lives in `assets/fonts/`. Swap it per game; keep the font's license file next to it and credit it.
+
+**The Theme editor changes every control of the selected Type.** To style only some labels, use a type variation, not the Label type.
+
+**Node settings beat the theme.** If a theme change doesn't show up on a node, check that node for a **Label Settings** resource (Labels) or ticked **Theme Overrides**; both replace the theme for that node.
+
+## 11. Glossary
 
 | Term | Meaning |
 | --- | --- |

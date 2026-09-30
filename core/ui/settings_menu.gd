@@ -1,5 +1,7 @@
 extends BaseMenu
 
+const UI_SCALE_STEPS: Array[float] = [0.75, 0.9, 1.0, 1.1, 1.25]
+
 @export var master_slider: HSlider
 @export var music_slider: HSlider
 @export var sfx_slider: HSlider
@@ -16,10 +18,6 @@ extends BaseMenu
 @export var ui_scale_up_button: Button
 @export var ui_scale_value_label: Label
 
-const UI_SCALE_STEPS: Array[float] = [0.75, 0.9, 1.0, 1.1, 1.25]
-
-
-
 
 func _ready() -> void:
 	super()
@@ -35,8 +33,8 @@ func _ready() -> void:
 	game_speed_slider.value_changed.connect(_on_game_speed_changed)
 	ui_scale_down_button.pressed.connect(_step_ui_scale.bind(-1))
 	ui_scale_up_button.pressed.connect(_step_ui_scale.bind(1))
-	
-		# The − and + buttons share one row: left/right moves between them,
+
+	# The − and + buttons share one row: left/right moves between them,
 	# up/down leaves the row the same way from either button.
 	ui_scale_down_button.focus_neighbor_right = ui_scale_down_button.get_path_to(ui_scale_up_button)
 	ui_scale_up_button.focus_neighbor_left = ui_scale_up_button.get_path_to(ui_scale_down_button)

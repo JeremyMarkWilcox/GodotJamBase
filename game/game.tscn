@@ -1,19 +1,14 @@
 [gd_scene format=3 uid="uid://dpeqdxb317lrk"]
 
 [ext_resource type="Script" uid="uid://qy4it252asph" path="res://game/game.gd" id="1_qdja7"]
-[ext_resource type="AudioStream" uid="uid://4qr4upba6mol" path="res://assets/sounds/music/Duty Calls - Rod Kim.mp3" id="2_i75et"]
+[ext_resource type="AudioStream" uid="uid://4qr4upba6mol" path="res://assets/sounds/music/duty_calls.mp3" id="2_i75et"]
 [ext_resource type="PackedScene" uid="uid://clc41ipfan7bu" path="res://core/ui/pause_menu.tscn" id="2_m71xk"]
+[ext_resource type="Theme" uid="uid://big3vhu7k1hbb" path="res://core/theme/base_theme.tres" id="3_l8g03"]
 [ext_resource type="PackedScene" uid="uid://dr52lc4bvyyj7" path="res://core/ui/settings_menu.tscn" id="3_m71xk"]
 [ext_resource type="PackedScene" uid="uid://cyyymtcnpcy60" path="res://core/ui/end_screen.tscn" id="5_adwu5"]
-[ext_resource type="AudioStream" uid="uid://b8d08d24ieooh" path="res://assets/sounds/music/Kayak - The Grey Room _ Density & Time.mp3" id="6_knu3h"]
+[ext_resource type="AudioStream" uid="uid://b8d08d24ieooh" path="res://assets/sounds/music/kayak.mp3" id="6_knu3h"]
 [ext_resource type="AudioStream" uid="uid://c476cpsaki108" path="res://assets/sounds/music/game_over.ogg" id="7_1vmna"]
 [ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://core/ui/controls_menu.tscn" id="8_wmqhs"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ra2i3"]
-font_size = 50
-font_color = Color(0.997778, 1, 0.9676067, 1)
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
 
 [node name="Game" type="Control" unique_id=670230050 node_paths=PackedStringArray("pause_menu", "win_screen", "game_over_screen")]
 layout_mode = 3
@@ -50,9 +45,10 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_l8g03")
+theme_type_variation = &"TitleLabel"
 text = "    Game Scene
     Press Esc / Start for the Pause Menu"
-label_settings = SubResource("LabelSettings_ra2i3")
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2023108572]

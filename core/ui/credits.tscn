@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://ddt1m8s6wg7ju"]
 
 [ext_resource type="Script" uid="uid://pd8cv474isyx" path="res://core/ui/credits.gd" id="1_3mp8h"]
+[ext_resource type="Theme" uid="uid://big3vhu7k1hbb" path="res://core/theme/base_theme.tres" id="2_3t7oe"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_ra2i3"]
-font_size = 50
-
-[node name="Credits" type="Control" unique_id=1391844769 node_paths=PackedStringArray("back_button", "first_focus", "focus_chain")]
+[node name="Credits" type="Control" unique_id=1391844769 node_paths=PackedStringArray("back_button", "scroll", "first_focus", "focus_chain")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3mp8h")
 back_button = NodePath("VBoxContainer/BackButton")
+scroll = NodePath("VBoxContainer/ScrollContainer")
 first_focus = NodePath("VBoxContainer/BackButton")
 focus_chain = [NodePath("VBoxContainer/BackButton")]
 
@@ -40,16 +39,28 @@ offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Credits" type="Label" parent="VBoxContainer" unique_id=762846986]
+[node name="CreditsTitle" type="Label" parent="VBoxContainer" unique_id=762846986]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
+theme = ExtResource("2_3t7oe")
+theme_type_variation = &"TitleLabel"
 text = "Credits"
-label_settings = SubResource("LabelSettings_ra2i3")
 
-[node name="Body" type="RichTextLabel" parent="VBoxContainer" unique_id=1294872875]
-custom_minimum_size = Vector2(500, 0)
+[node name="EmptyFiller" type="Label" parent="VBoxContainer" unique_id=1872581890]
 layout_mode = 2
+text = "
+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer" unique_id=839135666]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Body" type="RichTextLabel" parent="VBoxContainer/ScrollContainer" unique_id=1294872875]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
 bbcode_enabled = true
 text = "[center][b]Programming[/b]
 Name
@@ -57,12 +68,20 @@ Name
 [b]Art[/b]
 Name
 
-[b]Audio[/b]
-Name
-UI sounds: Kenney (CC0)
+[b]Music[/b]
+\"Deified\" by The Grey Room / Density & Time
+\"Kayak\" by The Grey Room / Density & Time
+\"Duty Calls\" by Rod Kim
+
+[b]Sound Effects[/b]
+Sound effects by Kenney (CC0)
+
+[b]Font[/b]
+VT323 by Peter Hull (SIL Open Font License)
 
 [b]Made with[/b]
-Godot Engine[/center]
+Godot Engine
+godotengine.org/license[/center]
 "
 fit_content = true
 

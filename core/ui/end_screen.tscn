@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://cyyymtcnpcy60"]
 
 [ext_resource type="Script" uid="uid://bsq1ys1w6rko1" path="res://core/ui/end_screen.gd" id="1_ii3hx"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ra2i3"]
-font_size = 50
+[ext_resource type="Theme" uid="uid://big3vhu7k1hbb" path="res://core/theme/base_theme.tres" id="2_chb2t"]
 
 [node name="EndScreen" type="Control" unique_id=1090858386 node_paths=PackedStringArray("heading_label", "retry_button", "title_button", "first_focus", "focus_chain")]
 layout_mode = 3
@@ -44,8 +42,9 @@ grow_vertical = 2
 
 [node name="Heading" type="Label" parent="VBoxContainer" unique_id=885659446]
 layout_mode = 2
+theme = ExtResource("2_chb2t")
+theme_type_variation = &"TitleLabel"
 text = "Heading"
-label_settings = SubResource("LabelSettings_ra2i3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
