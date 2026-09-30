@@ -7,6 +7,10 @@ extends Button
 
 var _listening := false
 
+const LISTEN_TIMEOUT := 5.0
+
+var _listen_id := 0
+
 
 func _ready() -> void:
 	pressed.connect(_start_listening)
@@ -17,8 +21,8 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if not _listening or not event.is_pressed() or event.is_echo():
 		return
-	# Escape (or Back on a controller) cancels without changing anything.
-	var is_cancel := (event is InputEventKey and (event as InputEventKey).physical_keycode == KEY_ESCAPE) \
+	# Left-click or controller Back cancels without changing anything.
+	var is_cancel := (event is InputEventMouseButton and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT) \
 			or (event is InputEventJoypadButton and (event as InputEventJoypadButton).button_index == JOY_BUTTON_BACK)
 	if is_cancel:
 		_stop_listening()
@@ -27,12 +31,18 @@ func _input(event: InputEvent) -> void:
 		InputManager.rebind(action, device, _clean(event))
 	else:
 		return  # wrong device: keep listening
-	get_viewport().set_input_as_handled()  # nothing else sees this press
+	get_viewport().set_input_as_handled()
 
 
 func _start_listening() -> void:
 	_listening = true
+	_listen_id += 1
+	var my_id := _listen_id
 	text = "Press a key..." if device == 0 else "Press a button..."
+	# Give up after a few seconds so the button never gets stuck listening.
+	await get_tree().create_timer(LISTEN_TIMEOUT, true, false, true).timeout
+	if _listening and my_id == _listen_id:
+		_stop_listening()
 
 
 func _stop_listening() -> void:

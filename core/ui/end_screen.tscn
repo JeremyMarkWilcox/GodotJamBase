@@ -5,7 +5,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_ra2i3"]
 font_size = 50
 
-[node name="EndScreen" type="Control" unique_id=1090858386 node_paths=PackedStringArray("heading_label", "retry_button", "title_button", "first_focus")]
+[node name="EndScreen" type="Control" unique_id=1090858386 node_paths=PackedStringArray("heading_label", "retry_button", "title_button", "first_focus", "focus_chain")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +17,7 @@ heading_label = NodePath("VBoxContainer/Heading")
 retry_button = NodePath("VBoxContainer/RetryButton")
 title_button = NodePath("VBoxContainer/TitleButton")
 first_focus = NodePath("VBoxContainer/RetryButton")
+focus_chain = [NodePath("VBoxContainer/RetryButton"), NodePath("VBoxContainer/TitleButton")]
 
 [node name="Dim" type="ColorRect" parent="." unique_id=186364503]
 layout_mode = 1

@@ -90,7 +90,7 @@ func stop_all_sfx() -> void:
 func _crossfade(from: AudioStreamPlayer, to: AudioStreamPlayer, fade_time: float) -> void:
 	if _music_tween:
 		_music_tween.kill()
-	_music_tween = create_tween().set_parallel()
+	_music_tween = create_tween().set_ignore_time_scale().set_parallel()
 	if from and from.playing:
 		_music_tween.tween_method(_set_linear_volume.bind(from), db_to_linear(from.volume_db), 0.0, fade_time)
 	if to:

@@ -83,10 +83,14 @@ func reset_to_defaults() -> void:
 func event_label(event: InputEvent) -> String:
 	if event == null:
 		return "—"
+	if event is InputEventKey:
+		var key := event as InputEventKey
+		var code := key.physical_keycode if key.physical_keycode != KEY_NONE else key.keycode
+		return OS.get_keycode_string(code)  # "P", "Escape", "Space"
 	if event is InputEventJoypadButton:
 		var index := (event as InputEventJoypadButton).button_index
 		return JOY_NAMES.get(index, "Button %d" % index)
-	return event.as_text().replace(" (Physical)", "")
+	return event.as_text()  # mouse buttons: "Left Mouse Button", etc.
 
 
 # --- Save / load ---

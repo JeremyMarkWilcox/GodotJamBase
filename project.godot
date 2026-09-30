@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Jam Base"
+config/version="0.1"
 run/main_scene="uid://bc7gq4vhepj5j"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -26,6 +27,7 @@ InputManager="*uid://byajq3ohbrhcg"
 Audio="*uid://bheog7nt33hxb"
 SceneManager="*uid://c2lpl4r0k2ifb"
 MenuManager="*uid://bld3llbebpdwt"
+Debug="*uid://c2ijrurwpnvxk"
 
 [debug]
 

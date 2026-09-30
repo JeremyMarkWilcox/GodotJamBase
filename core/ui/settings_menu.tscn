@@ -8,7 +8,12 @@ font_size = 50
 [sub_resource type="LabelSettings" id="LabelSettings_4liu5"]
 font_size = 25
 
-[node name="SettingsMenu" type="Control" unique_id=662873383 node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider", "ui_slider", "fullscreen_toggle", "ui_scale_slider", "shake_toggle", "flash_toggle", "back_button", "controls_button", "first_focus")]
+[sub_resource type="LabelSettings" id="LabelSettings_otjlk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ra2i3"]
+font_size = 25
+
+[node name="SettingsMenu" type="Control" unique_id=662873383 node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider", "ui_slider", "fullscreen_toggle", "shake_toggle", "flash_toggle", "back_button", "controls_button", "game_speed_slider", "game_speed_value_label", "ui_scale_down_button", "ui_scale_up_button", "ui_scale_value_label", "first_focus", "focus_chain")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,14 +24,20 @@ script = ExtResource("1_ig1xr")
 master_slider = NodePath("VBoxContainer/Master/HSlider")
 music_slider = NodePath("VBoxContainer/Music/HSlider")
 sfx_slider = NodePath("VBoxContainer/SFX/HSlider")
-ui_slider = NodePath("VBoxContainer/UI/HSlider")
+ui_slider = NodePath("VBoxContainer/UISounds/HSlider")
 fullscreen_toggle = NodePath("VBoxContainer/FullScreenBox/FullScreen")
-ui_scale_slider = NodePath("VBoxContainer/UIScale/HSlider")
 shake_toggle = NodePath("VBoxContainer/ShakeScreenBox/ScreenShake")
 flash_toggle = NodePath("VBoxContainer/FlashingEffectsBox/FlashingEffects")
 back_button = NodePath("VBoxContainer/BackButton")
 controls_button = NodePath("VBoxContainer/ControlsButton")
+game_speed_slider = NodePath("VBoxContainer/GameSpeedBox/GameSpeedSlider")
+game_speed_value_label = NodePath("VBoxContainer/GameSpeedBox/GameSpeedValue")
+ui_scale_down_button = NodePath("VBoxContainer/UIScale/UiScaleDown")
+ui_scale_up_button = NodePath("VBoxContainer/UIScale/UiScaleUp")
+ui_scale_value_label = NodePath("VBoxContainer/UIScale/UiScaleValue")
 first_focus = NodePath("VBoxContainer/Master/HSlider")
+focus_chain = [NodePath("VBoxContainer/Master/HSlider"), NodePath("VBoxContainer/Music/HSlider"), NodePath("VBoxContainer/SFX/HSlider"), NodePath("VBoxContainer/UISounds/HSlider"), NodePath("VBoxContainer/FullScreenBox/FullScreen"), NodePath("VBoxContainer/ShakeScreenBox/ScreenShake"), NodePath("VBoxContainer/FlashingEffectsBox/FlashingEffects"), NodePath("VBoxContainer/UIScale/UiScaleDown"), NodePath("VBoxContainer/GameSpeedBox/GameSpeedSlider"), NodePath("VBoxContainer/ControlsButton"), NodePath("VBoxContainer/BackButton")]
+metadata/_edit_horizontal_guides_ = [-51.0]
 
 [node name="Dim" type="ColorRect" parent="." unique_id=316380518]
 layout_mode = 1
@@ -35,7 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.92156863)
+color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=490367709]
 layout_mode = 1
@@ -102,14 +113,14 @@ layout_mode = 2
 max_value = 1.0
 step = 0.05
 
-[node name="UI" type="HBoxContainer" parent="VBoxContainer" unique_id=1916511796]
+[node name="UISounds" type="HBoxContainer" parent="VBoxContainer" unique_id=1916511796]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/UI" unique_id=1590328559]
+[node name="Label" type="Label" parent="VBoxContainer/UISounds" unique_id=1590328559]
 layout_mode = 2
 text = "UI Sounds            "
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/UI" unique_id=1583891508]
+[node name="HSlider" type="HSlider" parent="VBoxContainer/UISounds" unique_id=1583891508]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 max_value = 1.0
@@ -160,17 +171,55 @@ layout_mode = 2
 [node name="UIScale" type="HBoxContainer" parent="VBoxContainer" unique_id=394992399]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/UIScale" unique_id=1975529225]
+[node name="UiScaleLabel" type="Label" parent="VBoxContainer/UIScale" unique_id=1000863339]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 text = "UI Scale                "
+label_settings = SubResource("LabelSettings_otjlk")
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/UIScale" unique_id=1998406588]
-custom_minimum_size = Vector2(200, 0)
+[node name="UiScaleDown" type="Button" parent="VBoxContainer/UIScale" unique_id=2003301580]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-min_value = 0.75
-max_value = 1.5
+text = "-"
+
+[node name="UiScaleValue" type="Label" parent="VBoxContainer/UIScale" unique_id=1975529225]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "            100%              "
+label_settings = SubResource("LabelSettings_otjlk")
+
+[node name="UiScaleUp" type="Button" parent="VBoxContainer/UIScale" unique_id=1395818189]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "+"
+
+[node name="Gameplay" type="Label" parent="VBoxContainer" unique_id=911813062]
+layout_mode = 2
+text = "Gameplay"
+label_settings = SubResource("LabelSettings_ra2i3")
+horizontal_alignment = 1
+
+[node name="GameSpeedBox" type="HBoxContainer" parent="VBoxContainer" unique_id=1834207407]
+layout_mode = 2
+
+[node name="GameSpeedText" type="Label" parent="VBoxContainer/GameSpeedBox" unique_id=368132536]
+layout_mode = 2
+text = "Game Speed        "
+
+[node name="GameSpeedSlider" type="HSlider" parent="VBoxContainer/GameSpeedBox" unique_id=558781620]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.5
+max_value = 2.0
 step = 0.25
-value = 0.75
+value = 0.5
+
+[node name="GameSpeedValue" type="Label" parent="VBoxContainer/GameSpeedBox" unique_id=1405486294]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "1x\" and \"1.75x"
 
 [node name="ControlsButton" type="Button" parent="VBoxContainer" unique_id=190658101]
 layout_mode = 2

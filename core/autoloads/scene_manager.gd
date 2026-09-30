@@ -70,7 +70,7 @@ func _build_fade_overlay() -> void:
 
 func _fade_to(alpha: float) -> void:
 	_fade_rect.mouse_filter = Control.MOUSE_FILTER_STOP  # block clicks mid-fade
-	var tween := create_tween()
+	var tween := create_tween().set_ignore_time_scale()
 	tween.tween_property(_fade_rect, "color:a", alpha, FADE_TIME)
 	await tween.finished
 	if alpha == 0.0:

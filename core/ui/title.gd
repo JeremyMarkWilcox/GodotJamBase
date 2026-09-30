@@ -8,6 +8,7 @@ extends Control
 @export var quit_button: Button
 @export var settings_menu: BaseMenu
 @export var credits_menu: BaseMenu
+@export var version_label: Label
 
 
 func _ready() -> void:
@@ -19,6 +20,8 @@ func _ready() -> void:
 	quit_button.visible = not OS.has_feature("web")  # browsers can't close the tab
 	MenuManager.menu_closed.connect(_on_menu_closed)
 	play_button.grab_focus()
+	var version: String = ProjectSettings.get_setting("application/config/version", "")
+	version_label.text = "v" + version if version else ""
 
 
 func _on_play_pressed() -> void:
