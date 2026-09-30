@@ -60,6 +60,7 @@ func close_menu() -> void:
 func close_all() -> void:
 	for menu in _stack:
 		menu.close()
+		menu.last_focus = null
 	_stack.clear()
 	_update_pause()
 

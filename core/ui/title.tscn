@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://bjtpqornf3g4s" path="res://assets/sounds/music/Deified - The Grey Room _ Density & Time.mp3" id="2_4snhl"]
 [ext_resource type="PackedScene" uid="uid://dr52lc4bvyyj7" path="res://core/ui/settings_menu.tscn" id="2_fepre"]
 [ext_resource type="PackedScene" uid="uid://ddt1m8s6wg7ju" path="res://core/ui/credits.tscn" id="4_q06yk"]
-[ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://controls_menu.tscn" id="5_f8y5p"]
+[ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://core/ui/controls_menu.tscn" id="5_f8y5p"]
 
 [node name="Title" type="Control" unique_id=1641629483 node_paths=PackedStringArray("play_button", "settings_button", "credits_button", "quit_button", "settings_menu", "credits_menu", "version_label")]
 layout_mode = 3

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cyyymtcnpcy60" path="res://core/ui/end_screen.tscn" id="5_adwu5"]
 [ext_resource type="AudioStream" uid="uid://b8d08d24ieooh" path="res://assets/sounds/music/Kayak - The Grey Room _ Density & Time.mp3" id="6_knu3h"]
 [ext_resource type="AudioStream" uid="uid://c476cpsaki108" path="res://assets/sounds/music/game_over.ogg" id="7_1vmna"]
-[ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://controls_menu.tscn" id="8_wmqhs"]
+[ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://core/ui/controls_menu.tscn" id="8_wmqhs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ra2i3"]
 font_size = 50

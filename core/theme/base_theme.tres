@@ -1,0 +1,12 @@
+[gd_resource type="Theme" format=3 uid="uid://big3vhu7k1hbb"]
+
+[ext_resource type="FontFile" uid="uid://dl8fqw0cfdgm3" path="res://assets/textfiles/VT323-Regular.ttf" id="1_4fc2r"]
+
+[resource]
+default_font = ExtResource("1_4fc2r")
+default_font_size = 24
+Button/colors/font_disabled_color = Color(0, 0, 0, 0.6745098)
+Button/colors/font_focus_color = Color(0.9320523, 0.9493074, 0.52813584, 0.42745098)
+Button/colors/font_hover_color = Color(0.9135668, 0.92796046, 0.78696847, 1)
+Button/colors/font_hover_pressed_color = Color(0.9747469, 0.9278603, 0.7586869, 1)
+Button/colors/font_pressed_color = Color(0.827451, 1, 0.8117647, 1)

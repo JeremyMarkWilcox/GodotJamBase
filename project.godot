@@ -40,6 +40,10 @@ window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[gui]
+
+theme/custom="uid://big3vhu7k1hbb"
+
 [input]
 
 ui_accept={
