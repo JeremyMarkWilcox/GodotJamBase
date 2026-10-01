@@ -67,7 +67,11 @@ func _sync_from_settings() -> void:
 	music_slider.set_value_no_signal(Settings.volumes["Music"])
 	sfx_slider.set_value_no_signal(Settings.volumes["SFX"])
 	ui_slider.set_value_no_signal(Settings.volumes["UI"])
-	fullscreen_toggle.set_pressed_no_signal(Settings.fullscreen)
+	var is_fullscreen := Settings.fullscreen
+	if OS.has_feature("web"):
+		# The browser can leave fullscreen on its own (Esc), so ask it.
+		is_fullscreen = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+	fullscreen_toggle.set_pressed_no_signal(is_fullscreen)
 	shake_toggle.set_pressed_no_signal(Settings.screen_shake)
 	flash_toggle.set_pressed_no_signal(Settings.flashing)
 	game_speed_slider.set_value_no_signal(Settings.game_speed)

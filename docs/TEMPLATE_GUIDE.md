@@ -148,8 +148,8 @@ title.tscn  ── Play ──►  game/game.tscn
   ├─ Settings ─► Controls                  ├─ Esc/Start ─► Pause menu
   ├─ Credits                               │     ├─ Resume / Restart / Quit to Title
   └─ Quit (hidden on web)                  │     └─ Settings ─► Controls
-                                           ├─ Win screen
-                                           └─ Game Over screen
+										   ├─ Win screen
+										   └─ Game Over screen
 ```
 
 - **Boot** is the main scene. To preview the click-to-start screen on desktop, tick **Always Show** on the `Boot` node (untick before committing).
@@ -298,6 +298,16 @@ Follow the official GDScript style guide:
 - **Never export into the project folder.** The next export would pack the old build inside the new one.
 - Zip the **contents** of the build folder (not the folder), upload to itch.io as an HTML project, embed size 1280 × 720, fullscreen button on.
 - Double-clicking `index.html` does not work: browsers only load web games from a web server.
+
+### Esc and fullscreen on web
+
+Browsers reserve **Esc** for leaving fullscreen (ours or itch.io's button), and no game code can stop that. The template handles it like this:
+
+- **Esc in fullscreen** exits fullscreen *and* opens Pause in one press (`game.gd` pauses when the web window shrinks).
+- **The Fullscreen toggle** in Settings reads the browser's real state on web, so it shows off after an Esc.
+- **Players who want to stay in fullscreen** can remap Pause in the Controls menu (e.g. to P or Tab). A controller's Start button pauses without leaving fullscreen.
+
+For a jam game, tell players this on the itch.io page, e.g. *"Esc pauses but also exits fullscreen in the browser. Remap Pause in Settings → Controls to stay in fullscreen."*
 
 ## 10. UI theme
 

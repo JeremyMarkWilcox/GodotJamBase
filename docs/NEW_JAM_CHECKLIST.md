@@ -36,6 +36,8 @@ Steps to turn the template into a new game. See [TEMPLATE_GUIDE.md](TEMPLATE_GUI
 - [ ] Zip the build folder's **contents**, upload to the itch draft, test in the browser:
   - [ ] Click to start → music plays
   - [ ] Quit is hidden, fullscreen works
+  - [ ] Esc in fullscreen exits fullscreen and opens Pause
   - [ ] Page Up / Page Down do nothing (release build)
+- [ ] On the itch.io page, add the controls and the fullscreen note: Esc pauses but exits fullscreen in the browser; remap Pause in Settings → Controls to stay in fullscreen
 - [ ] Publish and submit to the jam a day early; keep day 9 as a buffer
 - [ ] Rate other entries during voting
